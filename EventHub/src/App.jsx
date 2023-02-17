@@ -3,16 +3,10 @@ import Footer from './components/Footer'
 import Header from './components/Header'
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
-import { Products } from './pages/Events'
-
-
-import {
-    BrowserRouter as Router , 
-    Routes,
-    Route
-  } from 'react-router-dom'
+import { Events } from './pages/Events'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { NotFound } from './pages/NotFound'
-import ProductDetails from './pages/EventDetail'
+import EventDetails from './pages/EventDetail'
 
 
 function App() {
@@ -31,8 +25,8 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
-          <Route path='/products' element={<Products />} />
-          <Route path='/products/:slug' element={<ProductDetails />} />
+          <Route path='/events' element={<Events />} />
+          <Route path='/events/:slug' element={<EventDetails />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>
