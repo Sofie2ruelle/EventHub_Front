@@ -14,7 +14,7 @@ const EventDetails = () => {
 
     const fetchEvents = async () => {
         setLoading(true)
-       await axios.get("http://localhost:8081/events")
+       await axios.get("http://localhost:8081/api/events")
              .then((res) => 
              { 
                  setEvents(res.data)   
@@ -25,11 +25,11 @@ const EventDetails = () => {
     }
     const currentEvent = events.find(
         (p) => {
-            console.log(p.titre.replaceAll(' ', '-'));
-            console.log(params.slug);
-            p.titre.replaceAll(' ', '-') === params.slug
+            p.titre.replaceAll(' ', '-').toLowerCase() === params.slug
+            return p;
         }
     )
+    console.log(currentEvent);
         
     
     useEffect(() => {
@@ -49,7 +49,8 @@ const EventDetails = () => {
 
                         <div className="flex">
                             <div className="w-1/2">
-                                <img src={currentEvent.image} alt={currentEvent.titre} />
+                            
+                                <img src={`data:image/jpeg;base64,${currentEvent.img}`} alt={currentEvent.titre} />
                             </div>
                             <div className="w-1/2 pl-10 flex flex-col justify-between">
                                 <div>

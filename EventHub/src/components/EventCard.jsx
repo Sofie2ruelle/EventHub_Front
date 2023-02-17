@@ -5,7 +5,7 @@ const EventCard = ({event}) => {
     const navigate = useNavigate()
 
     const goToEvent = () => {
-        navigate("/events/" + event.titre.replaceAll(' ', '-'))
+        navigate("/events/" + event.titre.replaceAll(' ', '-').toLowerCase())
     } 
     return (
         <div
