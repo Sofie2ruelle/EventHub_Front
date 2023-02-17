@@ -14,7 +14,7 @@ const EventDetails = () => {
 
     const fetchEvents = async () => {
         setLoading(true)
-       await axios.get("http://localhost:3000/events")
+       await axios.get("http://localhost:8081/events")
              .then((res) => 
              { 
                  setEvents(res.data)   
@@ -23,8 +23,13 @@ const EventDetails = () => {
                     setLoading(false)
             })
     }
-
-    const currentEvent = events.find((p) => p.slug === params.slug)
+    const currentEvent = events.find(
+        (p) => {
+            console.log(p.titre.replaceAll(' ', '-'));
+            console.log(params.slug);
+            p.titre.replaceAll(' ', '-') === params.slug
+        }
+    )
         
     
     useEffect(() => {
