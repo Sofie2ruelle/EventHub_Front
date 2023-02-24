@@ -6,7 +6,9 @@ import { Login } from './pages/Login'
 import { Events } from './pages/Events'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { NotFound } from './pages/NotFound'
-import EventDetails from './pages/EventDetail'
+import { UserDetail } from './pages/UserDetail'
+import EventDetails from './pages/EventDetails'
+import { Logout } from './pages/Logout'
 
 
 function App() {
@@ -25,8 +27,10 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
+          <Route path='/logout' element={<Logout />} />
           <Route path='/events' element={<Events />} />
           <Route path='/events/:slug' element={<EventDetails />} />
+          <Route path='/user-detail' element={<UserDetail />} />
           <Route path='*' element={<NotFound />} />
         </Routes>
       </div>

@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import HeaderItem from './HeaderItem'
 
 const Header = ({title = "EventHub"}) => {
-
+    const user=JSON.parse(localStorage.getItem("user"))
     const navigate = useNavigate()
-
-    const links = [
-        {path: "/login", title: "Connexion"},
-    ]
+    const links=[]
+    
+    if(user !== null){
+        links.push({path: "/", title: "Déconnexion"})
+    }else{
+        links.push({path: "/login", title: "Connexion"})
+    }
 
 return (
-    <header className='flex justify-between items-center'>
+    <header className='flex justify-between items-center bg-gradient-to-r from-blue-300 to-blue-400'>
     {/* LOGO */}
-    <div className='container mx-auto justify-between py-5 flex items-center cursor-pointer'>
+    <div className='container mx-5 justify-between py-5 flex items-center'>
 
     <div
         onClick={() => navigate('/')}
-        className='flex gap-3 items-center'>
+        className='flex gap-3 items-center cursor-pointer'>
     <img 
     src="../../public/img/logo.png" 
     alt="logo EventHub"
@@ -30,8 +33,8 @@ return (
 
     <nav>
     <ul className='flex justify-between gap-10 '>
-        {links.map(({title, path}) => (
-            <HeaderItem key={title} path={path} title={title} />
+        {
+            links.map(({title, path}) =>( <HeaderItem key={title} path={path} title={title} />
         ))}
     </ul>
     </nav>

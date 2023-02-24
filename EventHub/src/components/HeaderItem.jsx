@@ -1,16 +1,23 @@
 import React from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { json, Link, useLocation } from 'react-router-dom'
 
 const HeaderItem = ({path, title}) => {
-
+    const user= JSON.parse(localStorage.getItem("user"))
     const location = useLocation()
-  return (
+    const removeUser = () => {
+        if (user !== null) {
+            localStorage.clear();
+        }
+    }
+
+    return (
     <li className='font-bold cursor-pointer'>
     <Link
-    className={ location.pathname == path ? 'border-b-4 border-pink-700' : ''}
-    to={path}>{title}</Link>
-</li>
-  )
+        onClick={removeUser}
+        className={ location.pathname == path ? 'border-b-4 border-pink-700' : ''}
+        to={path}>{title}</Link>
+    </li>
+    )
 }
 
 export default HeaderItem

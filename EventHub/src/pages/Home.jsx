@@ -35,23 +35,23 @@ export const Home = () => {
     return (
         <main>
         {/* DESCRIPTION */}
-        <section className="lg:flex block gap-5 my-44 container mx-auto">
+        <section className="lg:flex block gap-5 my-44 container">
             <div className="lg:w-1/2 w-full flex flex-col justify-between">
                 <div className="flex gap-10">
-                    <button className="py-4 px-10 bg-pink-700 text-pink-50 shadow-sm shadow-black hover:bg-pink-300 hover:text-gray-900">
-                        <Link to={"/login"}>
+                    <button className="py-4 px-10 bg-blue-700 text-blue-50 shadow-sm shadow-black hover:bg-blue-300 hover:text-gray-900">
+                        <Link to={"/register"}>
                             S'inscrire
                         </Link>
                     </button>
-                    <button className="py-4 px-10 bg-pink-50 text-pink-700 shadow-sm shadow-black hover:bg-pink-300 hover:text-gray-900">
+                    <button className="py-4 px-10 bg-blue-50 text-blue-700 shadow-sm shadow-black hover:bg-blue-300 hover:text-gray-900">
                         <Link to={"/events"}>
                             Rechercher des événements
                         </Link>
                     </button>
                 </div>
             </div>
-            <div className="lg:w-1/2 w-full">
-                <img src="https://images.unsplash.com/photo-1614149484421-dcd8185578cb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80" alt="" />
+            <div className="lg:w-1/2 w-full mr-5">
+                <img className="rounded-2xl" src="../../public/img/photoHome.jpg" alt="photo-event" />
             </div>
     
         </section>
@@ -59,7 +59,7 @@ export const Home = () => {
         <Separateur />
     
         {/* EVENEMENTS LES PLUS POPULAIRES */}
-        <section className="container mx-auto">
+        <section className="container">
             <div>
                 <h3 className="text-2xl font-bold">Les Meilleurs événements</h3>
                 <p>Profiter des meilleurs événement avant leurs fins</p>
