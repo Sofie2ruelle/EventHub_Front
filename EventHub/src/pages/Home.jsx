@@ -45,7 +45,7 @@ export const Home = () => {
                     </button>
                     <button className="py-4 px-10 bg-pink-50 text-pink-700 shadow-sm shadow-black hover:bg-pink-300 hover:text-gray-900">
                         <Link to={"/events"}>
-                            Voir tout les événements
+                            Rechercher des événements
                         </Link>
                     </button>
                 </div>

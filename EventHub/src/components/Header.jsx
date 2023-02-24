@@ -13,7 +13,7 @@ const Header = ({title = "EventHub"}) => {
 return (
     <header className='flex justify-between items-center'>
     {/* LOGO */}
-    <div className='container mx-auto justify-between py-5 flex items-center'>
+    <div className='container mx-auto justify-between py-5 flex items-center cursor-pointer'>
 
     <div
         onClick={() => navigate('/')}
