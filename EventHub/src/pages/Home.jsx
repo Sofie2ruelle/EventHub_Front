@@ -9,6 +9,7 @@ export const Home = () => {
 
     const [events, setEvents] = useState([])
     const [loading, setLoading] = useState(false)
+    const user=JSON.parse(localStorage.getItem("user"))
 
 
     const fetchEvents = async () => {
@@ -35,19 +36,26 @@ export const Home = () => {
     return (
         <main>
         {/* DESCRIPTION */}
-        <section className="lg:flex block gap-5 my-44 container">
+        <section className="lg:flex block gap-5 my-44 container mx-auto">
             <div className="lg:w-1/2 w-full flex flex-col justify-between">
                 <div className="flex gap-10">
+                    {user == null ? 
+                    <Link to={"/register"}>
                     <button className="py-4 px-10 bg-blue-700 text-blue-50 shadow-sm shadow-black hover:bg-blue-300 hover:text-gray-900">
-                        <Link to={"/register"}>
+                        
                             S'inscrire
-                        </Link>
+                        
                     </button>
+                    </Link>
+                    :
+                    <a></a>}
+                    <Link to={"/events"}>
                     <button className="py-4 px-10 bg-blue-50 text-blue-700 shadow-sm shadow-black hover:bg-blue-300 hover:text-gray-900">
-                        <Link to={"/events"}>
+                        
                             Rechercher des événements
-                        </Link>
+                        
                     </button>
+                    </Link>
                 </div>
             </div>
             <div className="lg:w-1/2 w-full mr-5">
@@ -62,10 +70,10 @@ export const Home = () => {
         <section className="container">
             <div>
                 <h3 className="text-2xl font-bold">Les Meilleurs événements</h3>
-                <p>Profiter des meilleurs événement avant leurs fins</p>
+                <p>Profitez des meilleurs événements avant leur fin</p>
             </div>
             {/* CARDEVENEMENT */}
-            <div className="mt-10 mb-20 gap-7 sm:grid md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-10 mb-20 gap-7 sm:grid md:grid-cols-2 xl:grid-cols-4 ">
             { events.length  && !loading ? events.slice(-4).map((p) => (
                 <EventCard key={p.id} event={p} />
             )) : <Loading />}

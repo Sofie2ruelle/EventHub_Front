@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className='py-4 bg-gradient-to-r from-blue-300 to-blue-400'>
          <h3
           className='text-lg text-gray-800 font-bold text-center'>
-          Dawshop - {date} - Copyright</h3>
+          EventHub - {date} - Copyright</h3>
     </footer>
   )
 }

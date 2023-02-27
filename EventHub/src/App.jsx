@@ -9,6 +9,8 @@ import { NotFound } from './pages/NotFound'
 import { UserDetail } from './pages/UserDetail'
 import EventDetails from './pages/EventDetails'
 import { Logout } from './pages/Logout'
+import Signin from './pages/Register'
+import Register from './pages/Register'
 
 
 function App() {
@@ -17,17 +19,18 @@ function App() {
   return (
     <Router>
     <div
-     className='flex flex-col justify-between bg-pink-50 text-gray-900 min-h-screen font-sans'>
+     className='flex flex-col justify-between text-gray-900 min-h-screen font-sans bg-blue-50 dark:bg-blue-900'>
      {/* HEADER  */}
       <Header />
 
 
       {/* PAGES  */}
-      <div className='min-h-full'>
+      <div className='min-h-full bg-blue-50 dark:bg-blue-900'>
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/logout' element={<Logout />} />
+          <Route path='/register' element={<Register />} />
           <Route path='/events' element={<Events />} />
           <Route path='/events/:slug' element={<EventDetails />} />
           <Route path='/user-detail' element={<UserDetail />} />

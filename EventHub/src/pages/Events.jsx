@@ -71,7 +71,7 @@ export const Events = () => {
           {/* DESCRIPTION */}
           <div>
             <h3 className="text-2xl font-bold">Faites votre choix</h3>
-            <p>Profiter des meilleurs événement avants leurs fins</p>
+            <p>Profitez des meilleurs événements avant leur fin</p>
           </div>
             {/* FORMULAIRE */}
             <div className="my-4 flex gap-6">
