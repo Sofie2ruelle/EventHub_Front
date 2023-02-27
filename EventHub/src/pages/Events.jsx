@@ -90,8 +90,12 @@ export const Events = () => {
                >
                  <option 
                  value="Tout">Tout</option>
-                        <option value="SPORTIF">Sport</option>
-                        <option value="CULTUREL">Culture</option>
+                        <option value="ART">Sport</option>
+                        <option value="AUTRE">Culture</option>
+                        <option value="CULTUREL">Sport</option>
+                        <option value="EXPO">Culture</option>
+                        <option value="MUSIQUE">Sport</option>
+                        <option value="SPORTIF">Culture</option>
                 </select>
 
               {search.length > 1 && 
