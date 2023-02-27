@@ -5,8 +5,9 @@ const EventCard = ({event}) => {
     const navigate = useNavigate()
 
     const goToEvent = () => {
-        navigate("/events/" + event.titre.replaceAll(' ', '-').toLowerCase())
+        navigate("/events/" + event.titre.replaceAll(/[` .!?`]/gi, '-').toLowerCase()+event.id)
     } 
+    
     return (
         <div
         className="w-64 h-75 bg-transparent overflow-hidden shadow-md shadow-black group cursor-pointer transition duration-200 ease-in transform z-1 sm:hover:scale-105 bg-gradient-to-r from-blue-300 to-blue-400 dark:border-gray-700">

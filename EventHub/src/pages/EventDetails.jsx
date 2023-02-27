@@ -23,19 +23,17 @@ const EventDetails = () => {
                     setLoading(false)
             })
     }
+
     const currentEvent = events.find(
         (p) => {
-            p.titre.replaceAll(' ', '-').toLowerCase() === params.slug
-            return p;
+            if(p.titre.replaceAll(/[` .!?`]/gi, '-').toLowerCase()+p.id === params.slug){
+                return p;
+            }
         }
     )
-    console.log(currentEvent);
-        
     
     useEffect(() => {
-
      fetchEvents()
-
     }, [])
 
   return (
