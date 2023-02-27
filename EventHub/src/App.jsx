@@ -12,6 +12,7 @@ import { Logout } from './pages/Logout'
 import Signin from './pages/Register'
 import Register from './pages/Register'
 import { ListEventsUser } from './pages/ListEventsUser'
+import { EditCreateEvent } from './pages/EditCreateEvent'
 
 
 function App() {
@@ -33,8 +34,10 @@ function App() {
           <Route path='/logout' element={<Logout />} />
           <Route path='/register' element={<Register />} />
           <Route path='/events' element={<Events />} />
-          <Route path='/list-events-user' element={<ListEventsUser/>} />
           <Route path='/events/:slug' element={<EventDetails />} />
+          <Route path='/events/liste-evenements-utilisateur' element={<ListEventsUser/>} />
+          <Route path='/events/editer-un-evenement/:id' element={<EditCreateEvent/>} />
+          <Route path='/events/creer-un-evenement' element={<EditCreateEvent/>} />
           <Route path='/user-detail' element={<UserDetail />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

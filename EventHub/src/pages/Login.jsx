@@ -39,7 +39,7 @@ export const Login = () => {
     return (
 <section className="bg-blue-50 dark:bg-blue-900">
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
-        <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+        <a className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
           EventHub    
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 bg-gradient-to-r from-blue-300 to-blue-400 dark:border-gray-700">

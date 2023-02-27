@@ -24,6 +24,7 @@ const EventDetails = () => {
             })
     }
 
+    // Cherche l'event qui a dans son URL un slug identique.
     const currentEvent = events.find(
         (p) => {
             if(p.titre.replaceAll(/[` .!?`]/gi, '-').toLowerCase()+p.id === params.slug){
