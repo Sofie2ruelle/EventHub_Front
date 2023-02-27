@@ -11,6 +11,7 @@ import EventDetails from './pages/EventDetails'
 import { Logout } from './pages/Logout'
 import Signin from './pages/Register'
 import Register from './pages/Register'
+import { ListEventsUser } from './pages/ListEventsUser'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path='/logout' element={<Logout />} />
           <Route path='/register' element={<Register />} />
           <Route path='/events' element={<Events />} />
+          <Route path='/list-events-user' element={<ListEventsUser/>} />
           <Route path='/events/:slug' element={<EventDetails />} />
           <Route path='/user-detail' element={<UserDetail />} />
           <Route path='*' element={<NotFound />} />
