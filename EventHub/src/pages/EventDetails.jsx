@@ -43,7 +43,7 @@ const EventDetails = () => {
                 currentEvent && !loading ?
                     <>
                         <div className='py-4'>
-                            <BackButton />
+                            <BackButton path={"/events/liste-evenements-utilisateur"}/>
                         </div>
 
                         <div className="flex">

@@ -78,7 +78,7 @@ export const EditCreateEvent = () => {
 
         <div>
         <div className='py-4'>
-            <BackButton />
+            <BackButton path={"/events/liste-evenements-utilisateur"} />
         </div>
         <section className="max-w-4xl mb-6 p-6 mx-auto rounded-md shadow-md bg-gradient-to-r from-blue-300 to-blue-400 mt-20">
         <h1 className="text-xl font-bold text-white capitalize dark:text-white">Création d'un événement</h1>

@@ -58,7 +58,7 @@ export const ListEventsUser = () => {
     return (
     <div>
         <div className='py-4'>
-            <BackButton />
+            <BackButton path={"/user-detail"} />
         </div>
         <div className="container max-w-7xl mx-auto mt-8">
         <div className="mb-4">
