@@ -4,8 +4,10 @@ import { json, Link, useLocation } from 'react-router-dom'
 const HeaderItem = ({path, title}) => {
     const user= JSON.parse(localStorage.getItem("user"))
     const location = useLocation()
+
     const removeUser = () => {
-        if (user !== null) {
+        console.log(title + " - "+title === "Déconnexion");
+        if (user !== null && title === "Déconnexion") {
             localStorage.clear();
         }
     }
@@ -14,7 +16,7 @@ const HeaderItem = ({path, title}) => {
     <li className='font-bold cursor-pointer'>
     <Link
         onClick={removeUser}
-        className={ location.pathname == path ? 'border-b-4 border-pink-700' : ''}
+        //className={ location.pathname == path ? 'border-b-4 border-pink-700' : ''}
         to={path}>{title}</Link>
     </li>
     )
