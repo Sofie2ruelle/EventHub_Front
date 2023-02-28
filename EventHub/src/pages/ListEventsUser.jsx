@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
+import BackButton from '../components/BackButton';
 
 // Liste tout les événements d'un utilisateur.
 export const ListEventsUser = () => {
@@ -56,6 +57,9 @@ export const ListEventsUser = () => {
 
     return (
     <div>
+        <div className='py-4'>
+            <BackButton />
+        </div>
         <div className="container max-w-7xl mx-auto mt-8">
         <div className="mb-4">
             <h1 className="font-serif text-3xl font-bold underline decoration-gray-400">Liste des événements</h1>
@@ -69,9 +73,6 @@ export const ListEventsUser = () => {
                 <table className="min-w-full">
                 <thead>
                     <tr>
-                    <th
-                        className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                        ID</th>
                     <th
                         className="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-left text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
                         Image</th>
@@ -92,9 +93,6 @@ export const ListEventsUser = () => {
                 <tbody className="bg-white">
                 {events.map((event)=>
                     <tr key={event.id}>
-                    <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
-                        <div className="flex items-center">{event.id}</div>
-                    </td>
                     <td className="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                         <div className="text-sm leading-5 text-gray-900">
                             <img width={60} height={60} src={`data:image/jpeg;base64,${event.img}`} alt={event.titre}/>
