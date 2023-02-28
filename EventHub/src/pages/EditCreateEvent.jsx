@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import BackButton from '../components/BackButton'
 
 export const EditCreateEvent = () => {
 
+    const userLocal=JSON.parse(localStorage.getItem("user"));
+    const navigation=useNavigate();
     const params=useParams();
-    const URL = "http://localhost:8081/api/events/"+params.id;
+    const URL = typeof params.id === "number" || typeof params.id !== "undefined" ? "http://localhost:8081/api/events/"+params.id : "http://localhost:8081/api/events";
     
     const [loading, setLoading]=useState(false);
     const [formData, setFormData]=useState({
@@ -20,35 +22,56 @@ export const EditCreateEvent = () => {
         user: "",
         file: "",
     });
-
+    
+    //const dateFormatFr = (dateUTC)=>{
+    //    console.log("dateUTC : "+dateUTC);
+    //    let year=dateUTC.substring(0, 4)
+    //    let month=dateUTC.substring(5, 7)
+    //    let day=dateUTC.substring(8, 10)
+    //    let dateFormat=year+"-"+month+"-"+day;
+    //    return dateFormat;
+    //}
 
     const fetchEvent=async ()=>{
         setLoading(true)
+        console.log("fetchEvent");
         await axios.get(URL)
-        .then((res)=>{console.log(res.data); setFormData(res.data)})
+        .then((res)=>{
+            console.log(res.data)
+            setFormData(res.data)
+        })
         .catch((e)=>{console.log(e);})
         .finally(()=>{setLoading(false)})
     }
 
     const createUpdateEvent=async ()=>{
         setLoading(true);
+        console.log("Dans createUpdateevent apres selLoading");
+        console.log(formData.user = userLocal);
+        
+        await axios
+            .post(URL, formData, {mode:'cors'})
+            .then((res)=>{ 
+                navigation("/events/liste-evenements-utilisateur")
+            }).catch((e)=>{
+                console.log(e);
+            }).finally(()=>{setLoading(false)})
     }
 
-    const onSubmit = ()=>{
-        console.log(formData);
-        //createUpdateEvent
+    const onSubmit = (event)=>{
+        event.preventDefault();
+        createUpdateEvent();
     }
 
     const onChange = (e)=>{
         setFormData({
             ...formData,
-            [e.target.name]:e.target.value
+            [e.target.name]:e.target.value,
         })
-        console.log(formData);
     }
 
     useEffect(()=>{
-        params.id !== null ? fetchEvent() : null;
+       typeof params.id === "number" || typeof params.id !== "undefined" ? fetchEvent() : null;
     }, [])
 
     return (
@@ -69,10 +92,10 @@ export const EditCreateEvent = () => {
                     <label className="text-white dark:text-gray-200" htmlFor="lieu">Lieu</label>
                     <input id="lieu" type="text" value={formData.lieu} onChange={onChange} name="lieu" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
                 </div>
-                {/*<div>
+                <div>
                     <label className="text-white dark:text-gray-200" htmlFor="date">Date</label>
-                    <input id="date" type="date" value={Date.now(formData.date_event)} onChange={onChange} name="date_event"  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
-                </div>*/}
+                    <input id="date" type="datetime-local" value={formData.date_event} onChange={onChange} name="date_event"  className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"/>
+                </div>
                 <div>
                     <label className="text-white dark:text-gray-200" htmlFor="type">Types</label>
                     <select id="type" value={formData.type} onChange={onChange} name="type" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring">
@@ -97,7 +120,7 @@ export const EditCreateEvent = () => {
                     <textarea id="textarea" type="textarea" value={formData.description} onChange={onChange} name="description" className="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-300 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-500 dark:focus:border-blue-500 focus:outline-none focus:ring"></textarea>
                 </div>
                 
-                <input type="hidden" value={formData.user} name="user"/>
+                <input type="hidden" value={userLocal} name="user"/>
                 
                 <div>
                     <label className="block text-sm font-medium text-white">
@@ -124,7 +147,7 @@ export const EditCreateEvent = () => {
             </div>
     
             <div className="flex justify-end mt-6">
-                <button onClick={onSubmit} className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600">Save</button>
+                <button onClick={onSubmit} className="px-6 py-2 leading-5 text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-gray-600">Sauvegarder</button>
             </div>
         </form>
     </section>
